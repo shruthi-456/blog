@@ -1,0 +1,15 @@
+async function searchMovie() {
+  let movie = document.getElementById('movie').value;
+  let res = await fetch(`https://www.omdbapi.com/?apikey=YOUR_API_KEY&t=${movie}`);
+  let data = await res.json();
+  if (data.Response === "True") {
+    document.getElementById('result').innerHTML = `
+      <h3>${data.Title}</h3>
+      <p>Year: ${data.Year}</p>
+      <p>Genre: ${data.Genre}</p>
+      <p>Plot: ${data.Plot}</p>
+    `;
+  } else {
+    document.getElementById('result').innerText = "Movie not found!";
+  }
+ }
