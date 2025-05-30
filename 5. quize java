@@ -1,0 +1,24 @@
+const questions = [
+  { q: "What is 2 + 2?", options: ["3", "4", "5", "6"], answer: "4" },
+  { q: "What is the capital of France?", options: ["Rome", "Madrid", "Paris", "Berlin"], answer: "Paris" }
+ ];
+ let current = 0;
+ let question = document.getElementById('question');
+ let options = document.querySelectorAll('.option');
+ function loadQuestion() {
+  question.textContent = questions[current].q;
+  options.forEach((btn, i) => {
+    btn.textContent = questions[current].options[i];
+    btn.onclick = () => checkAnswer(btn.textContent);
+  });
+ }
+ function checkAnswer(selected) {
+  if (selected === questions[current].answer) alert("Correct!");
+  else alert("Wrong!");
+ }
+ function nextQuestion() {
+  current++;
+  if (current < questions.length) loadQuestion();
+  else alert("Quiz complete!");
+ }
+ loadQuestion();
