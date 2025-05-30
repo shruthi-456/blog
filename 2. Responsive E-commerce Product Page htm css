@@ -1,0 +1,28 @@
+body {
+ font-family: Arial, sans-serif;
+ padding: 20px;
+ background: #f8f8f8;
+}
+.product-container {
+ max-width: 400px;
+ margin: auto;
+ background: white;
+ padding: 20px;
+ text-align: center;
+ box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.product-image {
+ max-width: 100%;
+ height: auto;
+}
+.price {
+ font-size: 1.5em;
+ color: #b12704;
+}
+button {
+ background: #f0c14b;
+ border: 1px solid #a88734;
+border: 1px solid #a88734;
+ padding: 10px;
+ cursor: pointer;
+}
