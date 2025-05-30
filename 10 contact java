@@ -1,0 +1,15 @@
+ function addContact() {
+  let name = document.getElementById('name').value;
+  let phone = document.getElementById('phone').value;
+  if (name && phone) {
+    let li = document.createElement('li');
+    li.textContent = `${name} - ${phone}`;
+    let btn = document.createElement('button');
+    btn.textContent = 'Delete';
+    btn.onclick = () => li.remove();
+    li.appendChild(btn);
+    document.getElementById('contacts').appendChild(li);
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+  }
+ }
