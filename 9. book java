@@ -1,0 +1,6 @@
+document.getElementById('filter').addEventListener('input', function() {
+  let val = this.value.toLowerCase();
+  document.querySelectorAll('.recipe').forEach(recipe => {
+    recipe.style.display = recipe.textContent.toLowerCase().includes(val) ? '' : 'none';
+  });
+ });
