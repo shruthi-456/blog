@@ -1,0 +1,17 @@
+ let songs = ["song1.mp3", "song2.mp3", "song3.mp3"];
+ let current = 0;
+ let audio = document.getElementById("audio");
+ function playPause() {
+  if (audio.paused) audio.play();
+  else audio.pause();
+ }
+ function next() {
+  current = (current + 1) % songs.length;
+  audio.src = songs[current];
+  audio.play();
+ }
+ function prev() {
+  current = (current - 1 + songs.length) % songs.length;
+  audio.src = songs[current];
+  audio.play();
+ }
