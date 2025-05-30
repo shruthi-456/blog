@@ -1,0 +1,17 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Recipe Book</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+  <h1>Recipe Book</h1>
+  <input type="text" id="filter" placeholder="Filter recipes...">
+  <div id="recipes">
+    <div class="recipe" data-category="dessert"><h3>Chocolate Cake</h3><p>Rich chocolate dessert.</p></div>
+    <div class="recipe" data-category="main"><h3>Grilled Chicken</h3><p>Perfectly spiced chicken.</p></div>
+  </div>
+  <script src="script.js"></script>
+ </body>
+ </html>
