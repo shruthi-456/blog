@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 10
+
+// Node structure
+struct Node {
+    int vertex;
+    struct Node* next;
+};
+
+struct Node* adjList[MAX];
+int n;
+
+void addEdge(int u, int v) {
+    // Add v to u's list
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->vertex = v;
+    newNode->next = adjList[u];
+    adjList[u] = newNode;
+
+    // Add u to v's list (for undirected graph)
+    newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->vertex = u;
+    newNode->next = adjList[v];
+    adjList[v] = newNode;
+}
+
+void createGraph() {
+    int edges, u, v;
+    printf("Enter number of vertices: ");
+    scanf("%d", &n);
+
+    printf("Enter number of edges: ");
+    scanf("%d", &edges);
+
+    for (int i = 0; i < n; i++)
+        adjList[i] = NULL;
+
+    for (int i = 0; i < edges; i++) {
+        printf("Enter edge (u v): ");
+        scanf("%d%d", &u, &v);
+        addEdge(u, v);
+    }
+}
+
+void displayGraph() {
+    printf("\nAdjacency List:\n");
+    for (int i = 0; i < n; i++) {
+        struct Node* temp = adjList[i];
+        printf("%d: ", i);
+        while (temp) {
+            printf("%d -> ", temp->vertex);
+            temp = temp->next;
+        }
+        printf("NULL\n");
+    }
+}
+
+int main() {
+    createGraph();
+    displayGraph();
+    return 0;
+}
