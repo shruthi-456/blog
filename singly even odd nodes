@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Definition for singly-linked list node
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to create a new node
+struct Node* newNode(int data) {
+    struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
+    temp->data = data;
+    temp->next = NULL;
+    return temp;
+}
+
+// Function to rearrange the linked list by separating odd and even positioned nodes
+void rearrangeOddEven(struct Node** head_ref) {
+    if (*head_ref == NULL || (*head_ref)->next == NULL)
+        return;
+
+    struct Node *odd = *head_ref, *even = (*head_ref)->next;
+    struct Node *oddTail = odd, *evenTail = even;
+
+    while (evenTail != NULL && evenTail->next != NULL) {
+        oddTail->next = evenTail->next;
+        oddTail = oddTail->next;
+
+        evenTail->next = oddTail->next;
+        evenTail = evenTail->next;
+    }
+
+    oddTail->next = even;
+}
+
+// Function to print the linked list
+void printList(struct Node* node) {
+    while (node != NULL) {
+        printf("%d -> ", node->data);
+        node = node->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* head = newNode(1);
+    head->next = newNode(2);
+    head->next->next = newNode(3);
+    head->next->next->next = newNode(4);
+    head->next->next->next->next = newNode(5);
+    head->next->next->next->next->next = newNode(6);
+
+    printf("Original Linked List:\n");
+    printList(head);
+
+    rearrangeOddEven(&head);
+
+    printf("\nRearranged Linked List:\n");
+    printList(head);
+
+    return 0;
+}
